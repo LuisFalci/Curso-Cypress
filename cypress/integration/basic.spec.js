@@ -9,7 +9,15 @@ describe("Cypress basics", () => {
     cy.title().should("contain", "Campo");
 
     cy.title()
-    .should("be.equal", "Campo de Treinamento")
-    .and("contain", "Campo");
+      .should("be.equal", "Campo de Treinamento")
+      .and("contain", "Campo");
+  });
+
+  it.only("Should find and interact with an element", () => {
+    cy.visit("https://wcaquino.me/cypress/componentes.html");
+    
+    cy.get("#buttonSimple")
+    .click()
+    .should('have.value', 'Obrigado!');
   });
 });
