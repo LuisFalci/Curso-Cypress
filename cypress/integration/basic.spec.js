@@ -1,19 +1,24 @@
 /// <reference types="cypress" />
 
 describe("Cypress basics", () => {
-  it("Should visit a page and assert title", () => {
+  it.only("Should visit a page and assert title", () => {
     cy.visit("https://wcaquino.me/cypress/componentes.html");
+
+    //Pausa a execução nesta linha. 
+    cy.pause()
 
     //.should tenta repetidas vezes com o parametro passado até passar, ou cair no timeout
     cy.title().should("be.equal", "Campo de Treinamento");
-    cy.title().should("contain", "Campo");
+
+    // debug exibe no console informações
+    cy.title().should("contain", "Campo").debug();
 
     cy.title()
       .should("be.equal", "Campo de Treinamento")
       .and("contain", "Campo");
   });
 
-  it.only("Should find and interact with an element", () => {
+  it("Should find and interact with an element", () => {
     cy.visit("https://wcaquino.me/cypress/componentes.html");
     
     cy.get("#buttonSimple")
