@@ -63,12 +63,20 @@ describe("Work with basic elements", () => {
       .should("have.value", "acerto");
   });
 
-  it.only("RadioButton", () => {
+  it("RadioButton", () => {
     cy.get("#formSexoFem").click().should("be.checked");
 
     cy.get("#formSexoMasc").should("not.be.checked");
 
     //No colchetes nós definimos um tipo de busca, neste caso um name igual formSexo
     cy.get("[name=formSexo]").should("have.length", 2);
+  });
+
+  it.only("CheckBox", () => {
+    cy.get("#formComidaPizza").click().should("be.checked");
+    //multiple: true -> para quando temos mais de um retorno de elemento
+    cy.get("[name=formComidaFavorita]").click({ multiple: true });
+    cy.get("#formComidaPizza").should("not.be.checked");
+    cy.get("#formComidaVegetariana").should("be.checked");
   });
 });
