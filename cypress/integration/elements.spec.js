@@ -81,12 +81,21 @@ describe("Work with basic elements", () => {
   });
 
   it.only("Combo", () => {
+    //Nessa seleção eu posso selecionar pelo nome do campo ou pelo seu value
     cy.get("[data-test=dataEscolaridade]")
       .select("2o grau completo")
       .should("have.value", "2graucomp");
 
-      cy.get("[data-test=dataEscolaridade]")
+    cy.get("[data-test=dataEscolaridade]")
       .select("1graucomp")
       .should("have.value", "1graucomp");
   });
+
+  //Na seleção múltipla eu preciso passar o value do campo
+  it.only("Combo multiplo", () => {
+    cy.get("[data-testid=dataEsportes]")
+    .select(["natacao", "Corrida", "nada"])
+
+  });
+
 });
