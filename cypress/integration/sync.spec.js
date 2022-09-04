@@ -25,4 +25,22 @@ describe("Work with basic elements", () => {
 
     cy.get("#lista li span").should("contain", "Item 2");
   });
+
+  it("Uso do timeout", () => {
+    //o wait trava o processo e espera o tempo que definimos nele
+    cy.wait(5000)
+    cy.get("#buttonListDOM").click();
+    //o timeout aumenta o limite de tempo que um processo pode gastar
+    //Passado o tempo, se a assertiva não for cumprida, é dado como erro
+    cy.get("#lista li span", { timeout: 30000 }).should("contain", "Item 2");
+  });
+
+  it.only("Should vs Then", () => {
+    //o then espera quem o chamou ser resilvido antes de rodar o seu conteúdo
+    //o should tenta rodar inúmeras vezes até atender seu teste ou cair no timeout (erro)
+    cy.get("#buttonListDOM").then($el => {
+      expect($el).to.have.length(1)
+      cy.get("#buttonList")
+    })
+  });
 });
