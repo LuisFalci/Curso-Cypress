@@ -20,5 +20,8 @@
   "homepage": "https://github.com/LuisFalci/Curso-Cypress#readme",
   "devDependencies": {
     "cypress": "^3.6.0"
+  },
+  "dependencies": {
+    "cypress-xpath": "^2.0.1"
   }
 }
